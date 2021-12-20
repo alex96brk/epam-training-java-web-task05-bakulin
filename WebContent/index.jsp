@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Gem Portal</title>
-		<style><%@ include file="/static/css/style-static.css"%></style>
+		<style><%@ include file="/static/css/index-style.css"%></style>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -13,32 +13,16 @@
 				<div class = "title">
 					<h1>Gem Manage Portal</h1>
 				</div>
-			</div>
-			<div class="sidebar">
 				<div class="logo">
 					<a href="https://training.by/">
 						<img src='<c:url value="/static/img/epam-tc-img.png"></c:url>'/>
 					</a>
 				</div>
-				<div class="navigation">
-					<ul>
-						<li>
-							<h2 class="nav_link"><a>Parser Setup:</a></h2>
-						</li>
-						<li>
-							<select class="select-parser">
-								<option>DOM Parser</option>
-								<option>SAX Parser</option>
-								<option>StAX Parser</option>
-							</select>
-						</li>
-					</ul>
-				</div>
 			</div>
 			<div class="main">
 				<div class="content">
 					<div class="tool_bar">
-						<form action="parse" method="post">
+						<form action="/parse" method="post">
                     	<ul>
                     		<li>
                             	<p>Choose xml file to parse</p>
@@ -52,6 +36,13 @@
                         		</div>	
                         	</li>
                         	<li>
+								<select class="select-parser">
+									<option>DOM Parser</option>
+									<option>SAX Parser</option>
+									<option>StAX Parser</option>
+								</select>
+						</li>
+                        	<li>
                         		<div class="submit-input">
                         			<input type="submit" id="submit" class="submit" value="Parse">
                         		</div>
@@ -59,8 +50,28 @@
                     	</ul>
                     	</form>
                 	</div>
+                	<div class="description">
+                		<h2>Application Prompts:</h2>
+                		<ul>
+                			<li>1) Upload XML File with Gems data, click on Select File</li>
+                			<li>2) Choose parse method in select options (DOM, SAX, StAX)</li>
+                			<li>3) Submit changes, click on Parse Button and go</li>
+                		</ul>
+                	</div>
+                	<div class="description">
+                		<h2>Application Tech Core:</h2>
+                		<ul>
+                			<li>Server Side: Java EE, Servlet API, JSP</li>
+                			<li>Servlet Container / Server: Apache Tomcat</li>
+                			<li>User Interface: HTML5, CSS (Grid, Flexbox), JavaScript</li>
+                			<li>Patterns: SOLID, Command, Abstract Factory</li>
+                		</ul>
+                	</div>
 				</div>
 			</div>
 		</div>
+		<script>
+			<%@ include file="/static/js/index-dynamic-select.js"%>
+		</script>
 	</body>
 </html>
