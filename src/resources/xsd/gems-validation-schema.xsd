@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.epamtc.com/task5/gems"
+	targetNamespace="http://www.epamtc.com/task5/gems"
+	elementFormDefault="qualified">
+	
+	<xsd:complexType name="Gem">
+		<xsd:sequence>
+			<xsd:element name ="gem_type" type="tns:GemNameType"/>
+			<xsd:element name ="gem_origin_place" type="tns:GemOriginPlaceType"/>
+			<xsd:element name ="gem_preciousness" type="tns:GemPreciousness"/>
+			<xsd:element name ="gem_color" type="xsd:string"/>
+			<xsd:element name ="gem_transparency" type="tns:TransparencyType"/>
+			<xsd:element name ="gem_hardness" type="tns:HardnessType"/>
+			<xsd:element name ="gem_weight_value" type="xsd:double"/>
+			<xsd:element name="gem_add_ts" type="xsd:date"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:long" use="required"/>
+		<xsd:attribute name="unique_name" type="tns:UniqueGemName" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="GemNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="([a-zA-Z0-9 ']){1,32}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="GemOriginPlaceType">
+		<xsd:sequence>
+			<xsd:element name="country" type="xsd:string"/>
+			<xsd:element name="town" type="xsd:string"/>
+			<xsd:element name="mining_camp" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="GemPreciousness">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Precious"/>
+			<xsd:enumeration value="Semi-Precious"/>
+			<xsd:enumeration value="Non-Precious"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TransparencyType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+		<xsd:simpleType name="HardnessType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="UniqueGemName">
+		<xsd:restriction base="xsd:ID">
+			<xsd:pattern value="([a-zA-Z0-9]){1,32}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="gems">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="gem" type="tns:Gem" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+		</xsd:complexType>
+		<xsd:unique name="UGemId_constraint">
+			<xsd:selector xpath=".//*"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+	</xsd:element>
+
+</xsd:schema>
