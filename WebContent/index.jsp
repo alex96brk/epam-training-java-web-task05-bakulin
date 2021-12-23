@@ -57,7 +57,7 @@
                         		</div>
                         	</li>
                     	</ul>
-                    	<input type="hidden" name="command" id="file_upload" value="file_upload">
+                    	<input type="hidden" name="command" id="command" value="file_upload">
                     	</form>
                 	</div>
                 	<div class="description">

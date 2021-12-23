@@ -30,7 +30,7 @@
                             	<p>Parser Type: ${parserType}</p>
                         	</li>
                         	<li>
-                      			<a class ="btn-main" href="./welcome">Back to Main</a>
+                      			<a class ="btn-main" href="./controller">Back to Main</a>
                         	</li>
                     	</ul>
                 	</div>

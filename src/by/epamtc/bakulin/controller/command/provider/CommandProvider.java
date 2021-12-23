@@ -21,10 +21,10 @@ public class CommandProvider {
 		Command command = new EmptyCommand();
 		try {
 			List<FileItem> formItems = servletFileUpload.parseRequest(httpRequest);
-			System.out.println(formItems.isEmpty());
 			for (FileItem fileItem : formItems) {
 				if(fileItem.getFieldName().equals("command")) {
 					command = Commands.valueOf(fileItem.getString().toUpperCase()).getCommand();
+					command.setFormItems(formItems);
 				}
 			}
 		} catch (FileUploadException e) {
