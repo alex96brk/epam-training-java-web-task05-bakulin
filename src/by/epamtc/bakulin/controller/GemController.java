@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.epamtc.bakulin.controller.command.Command;
+import by.epamtc.bakulin.controller.command.Commands;
 import by.epamtc.bakulin.controller.command.provider.CommandProvider;
 
 @MultipartConfig
@@ -31,17 +32,21 @@ public class GemController extends HttpServlet{
 	}
 
 	private void processRequest(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException, IOException {
+		ServletContext servletContext = getServletContext();
+		String xsdPath = servletContext.getRealPath("/gems-validation-schema.xsd");
+		httpRequest.setAttribute("xsd", xsdPath);
 		CommandProvider commandProvider = new CommandProvider();
 		Command command = commandProvider.getCommand(httpRequest, httpResponse);
 		String page = command.execute(httpRequest, httpResponse);
 		boolean isPage = page != null;
-		ServletContext servletContext = getServletContext();
 		if (isPage) {
 			RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(page);
 			requestDispatcher.forward(httpRequest, httpResponse);
 		}
 		if (!isPage) {
-			System.out.println("Null Page");
+			command = Commands.ERROR.getCommand();
+			RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(command.execute(httpRequest, httpResponse));
+			requestDispatcher.forward(httpRequest, httpResponse);
 		}
 	}
 	

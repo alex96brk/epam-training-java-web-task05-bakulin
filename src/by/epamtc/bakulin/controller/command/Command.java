@@ -14,4 +14,6 @@ public interface Command {
 	String execute(HttpServletRequest httpRequest, HttpServletResponse httpResponse);
 	
 	void setFormItems(List<FileItem> formItems);
+	
+	void setDescription(String description);
 }

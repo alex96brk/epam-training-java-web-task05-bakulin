@@ -9,6 +9,7 @@ import org.junit.runners.MethodSorters;
 import by.epamtc.bakulin.model.Gem;
 import by.epamtc.bakulin.util.xml.document.gem.builder.GemBuilder;
 import by.epamtc.bakulin.util.xml.document.gem.builder.factory.GemBuilderFactory;
+import by.epamtc.bakulin.util.xml.document.gem.builder.factory.provider.GemBuilderFactoryEnum;
 import by.epamtc.bakulin.util.xml.document.gem.builder.factory.provider.GemBuilderFactoryProvider;
 import by.epamtc.bakulin.util.xml.exception.ParserNotFoundException;
 import by.epamtc.bakulin.util.xml.exception.handler.SaxExceptionHandler;
@@ -18,7 +19,7 @@ public class GemXmlBuilderProviderTest {
 	
 	private SaxExceptionHandler saxExceptionHandler = new SaxExceptionHandler();
 	
-	@Test
+	
 	public void gemDomProviderTest() {
 		try {
 			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_dom_parser");
@@ -32,7 +33,7 @@ public class GemXmlBuilderProviderTest {
 		}
 	}
 
-	@Test
+	
 	public void gemSaxProviderTest() {
 		try {
 			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_sax_parser");
@@ -49,18 +50,18 @@ public class GemXmlBuilderProviderTest {
 	@Test
 	public void gemStaxProviderTest() {
 		try {
-			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_stax_parser");
+			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.StAX);
 			GemBuilder gemBuilder = gemBuilderFactory.newInstance();
 			gemBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
 			Set<Gem> gemSet = gemBuilder.getGems();
 			System.out.println("StAX: " + gemSet + "\n" + gemBuilder.getClass() + "\n");
 			
 		} catch (ParserNotFoundException e) {
-			saxExceptionHandler.error(e);
+			System.out.println(e.getMessage());
 		}
 	}
 	
-	@Test
+	
 	public void gemZIllegalProviderTest() {
 		try {
 			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_privet_parser");

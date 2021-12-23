@@ -14,6 +14,7 @@ import by.epamtc.bakulin.controller.command.Command;
 public class EmptyCommand implements Command {
 	
 	private List<FileItem> formItems;
+	private String description;
 
 	@Override
 	public String execute(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
@@ -25,5 +26,12 @@ public class EmptyCommand implements Command {
 	public void setFormItems(List<FileItem> formItems) {
 		this.formItems = formItems;
 	}
+
+	@Override
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 	
 }

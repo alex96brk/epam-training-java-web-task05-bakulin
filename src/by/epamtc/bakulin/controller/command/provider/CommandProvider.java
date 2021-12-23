@@ -28,7 +28,9 @@ public class CommandProvider {
 				}
 			}
 		} catch (FileUploadException e) {
-			System.out.println(e.getMessage());
+			httpRequest.setAttribute("errorMessage", e.getMessage());
+			command = Commands.ERROR.getCommand();
+			command.setDescription(e.getMessage());
 		}
 		return command;
 	}
