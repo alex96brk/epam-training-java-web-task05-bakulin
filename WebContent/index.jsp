@@ -22,32 +22,42 @@
 			<div class="main">
 				<div class="content">
 					<div class="tool_bar">
-						<form action="/parse" method="post">
+						<form action="./controller" method="post" enctype="multipart/form-data">
                     	<ul>
                     		<li>
                             	<p>Choose xml file to parse</p>
                         	</li>
                         	<li>
                         		<div class="file-input">
-                        			<input type="file" id="file" class="file">
+                        			<input type="file" name="file" id="file" class="file">
             						<label for="file">
               							<p class="file-name">Select file</p>
             						</label>
-                        		</div>	
+                        		</div>
                         	</li>
                         	<li>
-								<select class="select-parser">
-									<option>DOM Parser</option>
-									<option>SAX Parser</option>
-									<option>StAX Parser</option>
-								</select>
-						</li>
+								<div class="form_radio_group">
+									<div class="form_radio_group-item">
+										<input id="radio-1" type="radio" name="radio" value="DOM" checked>
+										<label for="radio-1">DOM</label>
+									</div>
+									<div class="form_radio_group-item">
+										<input id="radio-2" type="radio" name="radio" value="SAX">
+										<label for="radio-2">SAX</label>
+									</div>
+									<div class="form_radio_group-item">
+										<input id="radio-3" type="radio" name="radio" value="StAX">
+										<label for="radio-3">StAX</label>
+									</div>
+								</div>
+                        	</li>
                         	<li>
                         		<div class="submit-input">
                         			<input type="submit" id="submit" class="submit" value="Parse">
                         		</div>
                         	</li>
                     	</ul>
+                    	<input type="hidden" name="command" id="file_upload" value="file_upload">
                     	</form>
                 	</div>
                 	<div class="description">
@@ -62,7 +72,7 @@
                 		<h2>Application Tech Core:</h2>
                 		<ul>
                 			<li>Server Side: Java EE, Servlet API, JSP</li>
-                			<li>Servlet Container / Server: Apache Tomcat</li>
+                			<li>Servlet Container / Server: Apache Tomcat 9</li>
                 			<li>User Interface: HTML5, CSS (Grid, Flexbox), JavaScript</li>
                 			<li>Patterns: SOLID, Command, Abstract Factory</li>
                 		</ul>

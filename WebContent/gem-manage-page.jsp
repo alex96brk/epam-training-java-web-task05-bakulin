@@ -26,6 +26,12 @@
                     		<li>
                             	<p>Parsed Gem Data:</p>
                         	</li>
+                        	<li>
+                            	<p>Parser Type: ${parserType}</p>
+                        	</li>
+                        	<li>
+                      			<a class ="btn-main" href="./welcome">Back to Main</a>
+                        	</li>
                     	</ul>
                 	</div>
                 	<div class = "gem_table">

@@ -23,7 +23,7 @@ public class JsonTest {
 	public void test1() {
 		GemBuilder gemBuilder = null;
 		try {
-			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.GEM_DOM_PARSER).newInstance();
+			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.DOM).newInstance();
 			gemBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
 		} catch (ParserNotFoundException e) {
 			System.out.println(e.getMessage());

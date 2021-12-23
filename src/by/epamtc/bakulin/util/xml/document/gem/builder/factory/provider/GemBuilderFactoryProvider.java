@@ -14,9 +14,9 @@ public class GemBuilderFactoryProvider {
 
 	public static GemBuilderFactory getGemBuilderFactory(String xmlParserType) throws ParserNotFoundException {
 		GemBuilderFactory gemBuilderFactory = null;
-		boolean isDom = xmlParserType.equalsIgnoreCase(GemBuilderFactoryEnum.GEM_DOM_PARSER.name());
-		boolean isSax = xmlParserType.equalsIgnoreCase(GemBuilderFactoryEnum.GEM_SAX_PARSER.name());
-		boolean isStax = xmlParserType.equalsIgnoreCase(GemBuilderFactoryEnum.GEM_STAX_PARSER.name());
+		boolean isDom = xmlParserType.equalsIgnoreCase(GemBuilderFactoryEnum.DOM.name());
+		boolean isSax = xmlParserType.equalsIgnoreCase(GemBuilderFactoryEnum.SAX.name());
+		boolean isStax = xmlParserType.equalsIgnoreCase(GemBuilderFactoryEnum.StAX.name());
 		if (isDom) {
 			gemBuilderFactory = new GemDomBuilderFactory();
 		}

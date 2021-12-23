@@ -18,7 +18,7 @@ public class GemSerivceFactoryTest {
 	public void test1() {
 		GemBuilder gemBuilder = null;
 		try {
-			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.GEM_DOM_PARSER).newInstance();
+			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.DOM).newInstance();
 			gemBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
 		} catch (ParserNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -32,7 +32,7 @@ public class GemSerivceFactoryTest {
 	public void test2() {
 		GemBuilder gemBuilder = null;
 		try {
-			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.GEM_SAX_PARSER).newInstance();
+			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.SAX).newInstance();
 			gemBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
 		} catch (ParserNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -46,7 +46,7 @@ public class GemSerivceFactoryTest {
 	public void test3() {
 		GemBuilder gemBuilder = null;
 		try {
-			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.GEM_STAX_PARSER).newInstance();
+			gemBuilder = GemBuilderFactoryProvider.getGemBuilderFactory(GemBuilderFactoryEnum.StAX).newInstance();
 			gemBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
 		} catch (ParserNotFoundException e) {
 			System.out.println(e.getMessage());

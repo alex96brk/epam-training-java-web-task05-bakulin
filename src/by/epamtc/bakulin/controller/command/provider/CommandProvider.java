@@ -1,21 +1,34 @@
 package by.epamtc.bakulin.controller.command.provider;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import by.epamtc.bakulin.controller.command.Command;
-import by.epamtc.bakulin.controller.command.implementation.Commands;
+import by.epamtc.bakulin.controller.command.Commands;
+import by.epamtc.bakulin.controller.command.implementation.EmptyCommand;
+
 
 public class CommandProvider {
-	public static Command getCommand(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-		Command command = Commands.EMPTY.getCommand();
-		String action = httpRequest.getParameter(Command.REQ_PARAM_COMMAND);
-		boolean isEmptyAction = action == null || StringUtils.isBlank(action) || action.isEmpty();
-		if(!isEmptyAction) {
-			Commands commands = Commands.valueOf(action.toUpperCase());
-			command = commands.getCommand();
+	public Command getCommand(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+		ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
+		Command command = new EmptyCommand();
+		try {
+			List<FileItem> formItems = servletFileUpload.parseRequest(httpRequest);
+			System.out.println(formItems.isEmpty());
+			for (FileItem fileItem : formItems) {
+				if(fileItem.getFieldName().equals("command")) {
+					command = Commands.valueOf(fileItem.getString().toUpperCase()).getCommand();
+				}
+			}
+		} catch (FileUploadException e) {
+			System.out.println(e.getMessage());
 		}
 		return command;
 	}

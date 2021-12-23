@@ -73,7 +73,6 @@ body {
 	background-color: #074e67;
 	border-radius: 8px;
 	padding: 20px;
-	
 }
 
 .tool_bar ul {
@@ -299,6 +298,23 @@ button {
 
 .select-parser select {
 	width: 300px;
+}
+
+.btn-main {
+	color: var(--global-text-color);
+	text-decoration: none;
+	font-size: 24px;
+	font-weight: bold;
+	background: #319fb7;
+	border-radius: 4px;
+	padding: 10px;
+	transition: 0.3s;
+}
+
+.btn-main:hover {
+	background: #1a73af;
+	box-shadow: 0 1px 10px #632ca4;
+	cursor: pointer;
 }
 
 

@@ -16,8 +16,23 @@
 		<servlet-class>by.epamtc.bakulin.controller.GemController</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>UploadFileServlet</servlet-name>
+		<servlet-class>by.epamtc.bakulin.controller.UploadFileServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>WelcomeServlet</servlet-name>
+		<servlet-class>by.epamtc.bakulin.controller.WelcomeServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>GemController</servlet-name>
+		<servlet-name>UploadFileServlet</servlet-name>
+		<url-pattern>/controller</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>WelcomeServlet</servlet-name>
 		<url-pattern>/welcome</url-pattern>
 	</servlet-mapping>
 
