@@ -124,11 +124,4 @@ public class GemDomBuilder extends GemBuilder {
 		return Double.parseDouble(strDouble);
 	}
 	
-	public static void main(String[] args) {
-		GemDomBuilder gemDomBuilder = new GemDomBuilder();
-		gemDomBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
-		Set<Gem> gems = gemDomBuilder.getGems();
-		System.out.println(gems);
-	}
-
 }

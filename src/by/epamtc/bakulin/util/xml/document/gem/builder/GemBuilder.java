@@ -6,6 +6,7 @@ import java.util.Set;
 import by.epamtc.bakulin.model.Gem;
 
 public abstract class GemBuilder {
+	
 	private Set<Gem> gems;
 	
 	public GemBuilder() {
