@@ -21,7 +21,7 @@ public class GemXmlBuilderProviderTest {
 	
 	private SaxExceptionHandler saxExceptionHandler = new SaxExceptionHandler();
 	
-	
+	@Test
 	public void gemDomProviderTest() {
 		try {
 			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_dom_parser");
@@ -35,7 +35,7 @@ public class GemXmlBuilderProviderTest {
 		}
 	}
 
-	
+	@Test
 	public void gemSaxProviderTest() {
 		try {
 			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_sax_parser");
@@ -67,7 +67,7 @@ public class GemXmlBuilderProviderTest {
 		}
 	}
 	
-	
+	@Test
 	public void gemZIllegalProviderTest() {
 		try {
 			GemBuilderFactory gemBuilderFactory = GemBuilderFactoryProvider.getGemBuilderFactory("gem_privet_parser");
