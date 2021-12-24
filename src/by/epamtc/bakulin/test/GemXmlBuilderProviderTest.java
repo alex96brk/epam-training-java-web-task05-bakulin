@@ -1,5 +1,7 @@
 package by.epamtc.bakulin.test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.FixMethodOrder;
@@ -55,6 +57,10 @@ public class GemXmlBuilderProviderTest {
 			gemBuilder.buildGemSet("C:/Users/E-group/Desktop/epam/xml-task-resources/gems.xml");
 			Set<Gem> gemSet = gemBuilder.getGems();
 			System.out.println("StAX: " + gemSet + "\n" + gemBuilder.getClass() + "\n");
+			List<Gem> gemList = new ArrayList<Gem>(gemSet);
+			for(Gem gem : gemList) {
+				System.out.println(gem);
+			}
 			
 		} catch (ParserNotFoundException e) {
 			System.out.println(e.getMessage());

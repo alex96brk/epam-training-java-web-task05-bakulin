@@ -53,13 +53,15 @@ public class GemStaxBuilder extends GemBuilder {
 	}
 
 	private void buildGemInstance(XMLEventReader xmlEventReader) throws XMLStreamException {
-		GemOriginPlace gemOriginPlace = new GemOriginPlace();
-		Gem gem = new Gem();
+		GemOriginPlace gemOriginPlace = null;
+		Gem gem = null;
 		while (xmlEventReader.hasNext()) {
 			XMLEvent xmlEvent = xmlEventReader.nextEvent();
 			if (xmlEvent.isStartElement()) {
 				StartElement startElement = xmlEvent.asStartElement();
 				if (startElement.getName().getLocalPart().equalsIgnoreCase(GemXmlTag.GEM.getTagValue())) {
+					gem = new Gem();
+					gemOriginPlace = new GemOriginPlace();
 					Attribute idAttribute = startElement.getAttributeByName(new QName(GemXmlTag.ATTR_ID.getTagValue()));
 					gem.setGemId(Long.parseLong(idAttribute.getValue()));
 					Attribute uniqueNameAttribute = startElement.getAttributeByName(new QName(GemXmlTag.ATTR_UNAME.getTagValue()));
