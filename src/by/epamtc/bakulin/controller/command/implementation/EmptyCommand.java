@@ -19,7 +19,7 @@ public class EmptyCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
 		httpResponse.setContentType("text/html");
-		return "/index.jsp";
+		return "/index.jsp"; //проверить слэш
 	}
 
 	@Override
